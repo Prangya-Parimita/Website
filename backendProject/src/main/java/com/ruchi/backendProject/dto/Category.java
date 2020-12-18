@@ -1,40 +1,68 @@
 package com.ruchi.backendProject.dto;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
+
 public class Category {
 
-	public int getId() {
+	public int getId()
+	{
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(int id) 
+	{
 		this.id = id;
 	}
-	public String getName() {
+	public String getName()
+	{
 		return name;
 	}
-	public void setName(String name) {
+	public void setName(String name) 
+	{
 		this.name = name;
 	}
-	public String getDesc() {
+	public String getDesc()
+	{
 		return desc;
 	}
-	public void setDesc(String desc) {
+	public void setDesc(String desc)
+	{
 		this.desc = desc;
 	}
-	public String getImageurl() {
+	public String getImageurl() 
+	{
 		return imageurl;
 	}
-	public void setImageurl(String imageurl) {
+	public void setImageurl(String imageurl)
+	{
 		this.imageurl = imageurl;
 	}
-	public boolean isActive() {
+	public boolean isActive() 
+	{
 		return active;
 	}
-	public void setActive(boolean active) {
+	public void setActive(boolean active)
+	{
 		this.active = active;
 	}
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
+	
 	private String name;
+	
+	@Column (name="description")
 	private String desc;
+	
+	@Column (name="image_url")
 	private String imageurl;
+	
 	private boolean active;
+	
 }
