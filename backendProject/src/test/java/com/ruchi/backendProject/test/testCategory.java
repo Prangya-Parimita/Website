@@ -1,5 +1,6 @@
 package com.ruchi.backendProject.test;
 
+
 import static org.junit.Assert.assertEquals;
 
 import org.junit.BeforeClass;
@@ -11,7 +12,8 @@ import com.ruchi.backendProject.dto.Category;
 
 public class testCategory 
 {
-
+	
+	
 	private static AnnotationConfigApplicationContext context;
 	
 	private static CategoryDAO categoryDAO;
@@ -35,9 +37,9 @@ public class testCategory
 	public void testInsert()
 	{
 		category = new Category();
-		category.setName("Music System");
-		category.setDesc("This is a sample music System category");
-		category.setImageurl("Cat_4.png");
+		category.setName("Television");
+		category.setDesc("This is a Television category");
+		category.setImageurl("Cat_1.png");
 		assertEquals("Error inserting a new row into the category Table",true,categoryDAO.insert(category));
 	}
 	/*
@@ -97,6 +99,5 @@ public class testCategory
 		
 		
 	}*/
-
 
 }

@@ -44,6 +44,7 @@ public class CategoryDAOimpl implements CategoryDAO
 
 		try
 		{
+			category.setActive(true);
 			sessionFactory.getCurrentSession().persist(category);
 			return true;
 		}
@@ -54,38 +55,20 @@ public class CategoryDAOimpl implements CategoryDAO
 			return false;
 		}
 	}
-
 	@Override
 	public boolean update(Category category) 
 	{
-		try 
-		{
-			sessionFactory.getCurrentSession().update(category);
-			return true;
-		} 
-		catch (Exception ex) 
-		{
-			ex.printStackTrace();
-			return false;
-		}
+		return false;
+		
 	}
 
 	@Override
 	public boolean delete(Category category) 
 	{
+		return false;
 
-		category.setActive(false);
+	
 		
-		try 
-		{
-			sessionFactory.getCurrentSession().update(category);
-			return true;
-		} 
-		catch (Exception ex) 
-		{
-			ex.printStackTrace();
-			return false;
-		}
 	}
 	
 }
