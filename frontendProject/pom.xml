@@ -1,25 +1,19 @@
-<?xml version="1.0" encoding="UTF-8"?>
-
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.ruchi</groupId>
+	<artifactId>frontendProject</artifactId>
+	<packaging>war</packaging>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>Frontend Maven Webapp</name>
+	<url>http://maven.apache.org</url>
 
-  <groupId>com.ruchi</groupId>
-  <artifactId>frontendProject</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
-  <packaging>war</packaging>
-
-  <name>frontendProject Maven Webapp</name>
-  <!-- FIXME change it to the project's website -->
-  <url>http://www.example.com</url>
-
- <properties>
+	<properties>
 		<javaee.version>7.0</javaee.version>
 		<spring.version>4.3.6.RELEASE</spring.version>
 		<spring.security.version>4.2.2.RELEASE</spring.security.version>
 
 	</properties>
-
 	<dependencies>
 
 		<!-- JUNIT -->
@@ -42,13 +36,31 @@
 
 
 		<!-- SPRING -->
-
+        <dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-core</artifactId>
+			<version>${spring.version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>commons-logging</groupId>
+					<artifactId>commons-logging</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-webmvc</artifactId>
 			<version>${spring.version}</version>
 		</dependency>
-
+		
+		<!-- Added for TOMCAT  Server Problem-->
+		
+		<dependency>
+    		<groupId>commons-digester</groupId>  
+    		<artifactId>commons-digester</artifactId>
+    		<version>2.1</version>
+		</dependency>
+	
 		<!-- JSTL -->
 
 		<dependency>
@@ -62,6 +74,7 @@
 		 <groupId>com.ruchi</groupId>
          <artifactId>backendProject</artifactId>
          <version>0.0.1-SNAPSHOT</version>
+
         </dependency> 
 		
 		</dependencies>

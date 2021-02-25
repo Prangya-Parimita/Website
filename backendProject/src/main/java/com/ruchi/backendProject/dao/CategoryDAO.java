@@ -4,10 +4,12 @@ import java.util.List;
 
 import com.ruchi.backendProject.dto.Category;
 
-public interface CategoryDAO {
+public interface CategoryDAO
+{
   
 	Category getCategory(int id);
 	List<Category> categoryList();
+	
 	boolean insert(Category category);
 	boolean update(Category category);
 	boolean delete(Category category);

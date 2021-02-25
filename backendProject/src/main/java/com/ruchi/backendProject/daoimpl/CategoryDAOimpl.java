@@ -11,64 +11,87 @@ import org.springframework.transaction.annotation.Transactional;
 import com.ruchi.backendProject.dao.CategoryDAO;
 import com.ruchi.backendProject.dto.Category;
 
-@Repository("categoryDAO")
+@Repository("CategoryDAO")
 @Transactional
-public class CategoryDAOimpl implements CategoryDAO
+
+class CategoryDAOimpl implements CategoryDAO
 {
 	@Autowired
-	private SessionFactory sessionFactory;
+    private SessionFactory sessionFactory;
+	
 	
 	@Override
-	public Category getCategory(int id) 
-	{
-		return sessionFactory.getCurrentSession().get(Category.class,id );
+	public Category getCategory(int id) {
 		
+		
+		return sessionFactory.getCurrentSession().get(Category.class,id);
 	}
 
 	@Override
-	public List<Category> categoryList() 
+	public List<Category> categoryList()
 	{
-		String selectActiveCategory = "FROM Category WHERE active = :active";
-		
+		// used HQL
+		String selectActiveCategory = "from Category where active = :active";
+		 
 		Query query = sessionFactory.getCurrentSession().createQuery(selectActiveCategory);
-				
+		
 		query.setParameter("active", true);
-						
+				
 		return query.getResultList();
-
 	}
 
 	@Override
+	
 	public boolean insert(Category category) 
 	{
-
 		try
-		{
+		{  
 			category.setActive(true);
 			sessionFactory.getCurrentSession().persist(category);
 			return true;
 		}
 		catch(Exception e)
 		{
-			
 			e.printStackTrace();
 			return false;
 		}
+	
 	}
+
 	@Override
-	public boolean update(Category category) 
-	{
-		return false;
+	public boolean update(Category category) {
 		
+		try
+		{  
+			category.setActive(true);
+			sessionFactory.getCurrentSession().update(category);
+			return true;
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+			return false;
+		}
 	}
 
 	@Override
 	public boolean delete(Category category) 
 	{
-		return false;
-
-	
 		
+	
+		try
+		{  
+			category.setActive(false);
+			sessionFactory.getCurrentSession().update(category);
+			return true;
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+			return false;
+		}
+	
 	}
+	
 	
 }

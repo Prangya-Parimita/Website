@@ -2,8 +2,8 @@
 
 	<div class="row">	
 		
-		<h1>About Us</h1>
-		<hr/>
-		<p>This is an About Us page</p>	
-	
+     <h3> Call +91 800 567 4859</h3>
+    	
+
 	</div>
+</div>

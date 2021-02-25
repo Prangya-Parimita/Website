@@ -15,7 +15,7 @@
 		 http://www.springframework.org/schema/webflow-confiq/spring-webflow-confiq.xsd">
 		 
 		 <context:component-scan base-package="com.ruchi.frontendProject.controller"/>
-		 <context:component-scan base-package="com.ruchi.backendProject.daoimpl"/>
+		 <context:component-scan base-package="com.ruchi.backendProject"/>
 		 
 		 
 		 <!-- views resolver -->
@@ -30,4 +30,8 @@
 		 <mvc:annotation-driven/>
 		 
 		 <mvc:resources location="/assets/" mapping="/rs/**/" />
-</beans>
+		 <bean id="multipartResolver"
+         class="org.springframework.web.multipart.support.StandardServletMultipartResolver"/>
+	
+	
+         </beans>
