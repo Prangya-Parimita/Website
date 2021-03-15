@@ -36,7 +36,7 @@
 	}
 	else {
 		// Browser
-		factory( jQuery, window, document );
+	factory( jQuery, window, document );
 	}
 }(function( $, window, document, undefined ) {
 'use strict';

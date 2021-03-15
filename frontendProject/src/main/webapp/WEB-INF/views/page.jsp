@@ -6,7 +6,7 @@
      
     <spring:url var="customcss" value="/rs/css" />
     <spring:url var="customjs" value="/rs/js" />
-    <spring:url var="jquery" value="/rs/vendor/jquery " />
+    <spring:url var="jquery" value="/rs/vendor/jquery" />
     <spring:url var="bootcss" value="/rs/vendor/bootstrap/css" />
     <spring:url var="bootjs" value="/rs/vendor/bootstrap/js" />
     <spring:url var="images" value="/rs/images" />
@@ -32,15 +32,16 @@
 
    <!-- Bootstrap core CSS -->
    <link href="${bootcss}/bootstrap.min.css" rel="stylesheet">
-
-   
-   <!-- Custom styles for this template -->
-   <link href="${customcss}/shop-homepages.css" rel="stylesheet">
+    
+      
+    <!-- Custom theme for this template -->
+   <link href="${customcss}/bootstrap.yeti.theme.css" rel="stylesheet">
   
    <!-- Bootstrap DataTable -->
    <link href="${customcss}/dataTables.bootstrap.css" rel="stylesheet">
    
-   
+      <!-- Custom styles for this template -->
+   <link href="${customcss}/shop-homepage.css" rel="stylesheet">
 </head>
 
 <body>
@@ -64,25 +65,37 @@
 	</c:if>
 	
     <!-- Product Content -->
-    <c:if test="${userClickAllProducts == true or userClickCategoryProducts == true }">
+    <c:if test="${userClickAllProducts == true or userClickCategoryProduct == true}">
 	    <%@include file="listProduct.jsp"%>
     </c:if>
 	
+	 <!--Single Product Content -->
+    <c:if test="${userClickSingleProduct == true}">
+	    <%@include file="singleProduct.jsp"%>
+    </c:if>
 	
+	 <!--Manage Product Content -->
+    <c:if test="${userClickManageProduct == true}">
+	    <%@include file="manageProduct.jsp"%>
+    </c:if>
 	
 	
 	<!-- JQuery core JavaScript -->
-	<script src="${jquery}/jquery.min.js"></script>
+	<script src="${jquery}/jquery.js"></script>
+	
+	<!-- JQuery Validation Plugin -->
+	<script src="${customjs}/jquery.validate.js"></script>
+	
 	
 	<!-- Bootstrap core JavaScript -->
-	<script src="${bootjs}/bootstrap.min.js"></script>
+	<script src="${bootjs}/bootstrap.js"></script>
 	
-	<!-- Bootstrap dataTable plugin -->
+	<!-- Bootstrap dataTable Plugin -->
 		<script src="${customjs}/jquery.dataTables.js"></script>
 		
 		<script src="${customjs}/dataTables.bootstrap.js"></script>
 		
-		
+		<script src="${customjs}/bootbox.min.js"></script>
 	<!-- Customs JavaScripts-->
 		<script src="${customjs}/myscript.js"></script>
 		

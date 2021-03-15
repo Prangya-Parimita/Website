@@ -1,7 +1,6 @@
-<br/>
-<br/>
-<br/>
-<br/>
+<br />
+<br />
+<br />
 <div class="container">
 
 	<div class="row">
@@ -32,7 +31,7 @@
 						</ol>
 					</c:if>
 
-					<c:if test="${userClickCategoryProducts == true}">
+					<c:if test="${userClickCategoryProduct == true}">
 						<script>
 							window.categoryId = '${category.id}';
 						</script>
@@ -57,12 +56,16 @@
 
 					<thead>
 						<tr>
-							<th>Product Code</th>
-							<th>Product Name</th>
-
+						    <th>Code</th>
+							<th>Name</th>
+							<th>Brand</th>
+							<th>Unit Price</th>
+							<th>Available Quantity</th>
+							<th>Id</th>
+							<th></th>
 						</tr>
 					</thead>
-					
+
 				</table>
 			</div>
 

@@ -32,16 +32,19 @@ public class testCategory
 	
 	
 	
-   @Test
+   /*  @Test
 	public void testInsert()
 	{
 		category = new Category();
-		category.setName("TELEVISION");
-		category.setDesc("television category");
-		category.setImageurl("Cat_1.png");
+		category.setName("FAN");
+		category.setDesc("Fan category");
+		category.setImageurl("Cat_1.jpg");
 		assertEquals("Error inserting a new row into the category Table",true,categoryDAO.insert(category));
 		
-		//true is the boolean expression
+	}*/
+ 
+ 
+ /*{  //true is the boolean expression
 		category = new Category();
 		category.setName("AIR CONDITION");
 		category.setDesc("air condition category");
@@ -60,7 +63,7 @@ public class testCategory
 		category.setImageurl("Cat_4.png");
 		assertEquals("Error inserting a new row into the category Table",true,categoryDAO.insert(category));
 		 
-	}
+	}*/
    
 	
 	

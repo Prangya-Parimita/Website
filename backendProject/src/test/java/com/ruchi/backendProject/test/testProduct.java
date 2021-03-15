@@ -27,7 +27,7 @@ private static AnnotationConfigApplicationContext context;
 		productDAO = (ProductDAO)context.getBean("ProductDAO");
 	}	
 
-	@Test
+	/*@Test
 	  public void testAddProduct()
 	   {
 		product = new Product();
@@ -72,7 +72,7 @@ private static AnnotationConfigApplicationContext context;
 		product.setSupplierId(2);
 		assertEquals("Error while inserting a new product!",true,productDAO.insertProduct(product));
 			
-	 }
+	 }*/
 	
 	/*@Test
 	public void testGetProduct()

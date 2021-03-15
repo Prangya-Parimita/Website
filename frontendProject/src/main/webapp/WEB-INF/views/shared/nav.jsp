@@ -12,11 +12,12 @@
 					href="${contextRoot}/home">Home <span class="sr-only">(current)</span></a></li>
 				<li class="nav-item" id="about"><a class="nav-link"
 					href="${contextRoot}/about">About Us</a></li>
-				<li class="nav-item" id="listProduct"><a class="nav-link"
-					href="${contextRoot}/show/all/products"> All Products</a></li>
 				<li class="nav-item" id="contact"><a class="nav-link"
 					href="${contextRoot}/contact">Contact Us</a></li>
-				
+				<li class="nav-item" id="listProduct"><a class="nav-link"
+					href="${contextRoot}/show/all/products">All Products</a></li>
+				<li class="nav-item" id="manageProduct"><a class="nav-link"
+					href="${contextRoot}/manage/product">Manage Product</a></li>				
 			</ul>
 
 		</div>
