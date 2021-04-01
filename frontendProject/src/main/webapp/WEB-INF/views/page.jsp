@@ -78,8 +78,14 @@
     <c:if test="${userClickManageProduct == true}">
 	    <%@include file="manageProduct.jsp"%>
     </c:if>
+    
+     <!--cart  -->
+    <c:if test="${userClickShowCart == true}">
+	    <%@include file="cart.jsp"%>
+    </c:if>
+    
 	
-	
+	<!-- --footer -->
 	<!-- JQuery core JavaScript -->
 	<script src="${jquery}/jquery.js"></script>
 	

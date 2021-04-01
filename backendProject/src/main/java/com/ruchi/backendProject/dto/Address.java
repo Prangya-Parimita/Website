@@ -1,31 +1,48 @@
 package com.ruchi.backendProject.dto;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-@Entity
-public class Address
-{
+import javax.persistence.ManyToOne;
 
+import org.hibernate.validator.constraints.NotBlank;
+
+
+@Entity
+public class Address implements Serializable
+{
+	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
+	/*@Column(name="user_id")  // need to remove for one to many linking
+	private int userId;*/
+	
+	
 	@Column(name = "address_line_one")
+	@NotBlank(message=" Not empty")
     private String addressLineOne;
 	
 	@Column(name = "address_line_two")
+	@NotBlank(message="Not empty")
 	private String addressLineTwo;
 	
+	@NotBlank(message="Please enter city! ")
 	private String city;
 	
+	@NotBlank(message=" Pleasa enter state! ")
 	private String state;
 	
+	@NotBlank(message="Please enter county!  ")
 	private String country;
 	
 	@Column(name ="postal_code")
+	@NotBlank(message=" Please enter postal-code! ")
 	private String postalCode;
 	
 	@Column(name="is_shipping")
@@ -34,17 +51,7 @@ public class Address
 	@Column(name="is_billing")
 	private boolean billing;  
 	
-	private int userId;
 	
-	public int getUserId() {
-		return userId;
-	}
-
-	public void setUserId(int userId) {
-		this.userId = userId;
-	}
-
-
 	
 	public int getId() 
 	{
@@ -56,6 +63,17 @@ public class Address
 		this.id = id;
 	}
 
+	/*public int getUserId()
+	{
+		return userId;
+	}
+
+	public void setUserId(int userId)                            // for one to many linking of user and address
+	{
+		this.userId = userId;
+	}*/
+	
+	
 	public String getAddressLineOne()
 	{
 		return addressLineOne;
@@ -136,6 +154,27 @@ public class Address
 		this.billing = billing;
 	}
 
+	
+	// dont need for one to many mapping
+/*	@Override
+	public String toString() 
+	{
+		return "Address [id=" + id + ", userId=" + userId + ", addressLineOne=" + addressLineOne + ", addressLineTwo="
+				+ addressLineTwo + ", city=" + city + ", state=" + state + ", country=" + country + ", postalCode="
+				+ postalCode + ", shipping=" + shipping + ", billing=" + billing + "]";
+	}
+*/
+	
+	@Column(name = "user_id")
+	private int userId;
+
+	public int getUserId() {
+		return userId;
+	}
+	public void setUserId(int userId) {
+		this.userId = userId;
+	}
+	
 
 	
 }

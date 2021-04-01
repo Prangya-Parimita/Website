@@ -1,11 +1,18 @@
 package com.ruchi.frontendProject.controller;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.ruchi.backendProject.dao.CategoryDAO;
@@ -105,6 +112,55 @@ public class frontController
 		return mav;
 	}
 	
+	@RequestMapping(value = "/register")
+	public ModelAndView register() 
+	{
+		ModelAndView mav = new ModelAndView("page");
+		return mav;
+	}
+	
+	@RequestMapping(value = "/login")
+	public ModelAndView login(@RequestParam(name="error", required = false)	String error,@RequestParam(name="logout", required = false)	String logout) 
+	{
+		ModelAndView mav = new ModelAndView("login");
+		
+		if(error!= null) 
+		{
+			mav.addObject("message", "Username or Password is invalid!");
+		}
+		
+		if(logout!= null) 
+		{
+			mav.addObject("logout", "Successfully logged out.");
+		}
+		mav.addObject("title","LogIn");
+		return mav;
+	}
+	
+	
+
+	@RequestMapping(value = "/access-denied")
+	public ModelAndView accessDenied() 
+	{
+		ModelAndView mav = new ModelAndView("error");
+		
+		return mav;
+	}
+	
+	
+	@RequestMapping(value = "/custom-logout")
+	public String logout(HttpServletRequest request, HttpServletResponse response)// create two parameter
+	{   
+		
+		// physicall call the logout fn
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();// remove authentication parameter
+		
+	    if (auth != null){    
+	        new SecurityContextLogoutHandler().logout(request, response, auth);
+	    }
+	    
+	    return "redirect:/login?logout";
+	}
 
 }
-
+ 

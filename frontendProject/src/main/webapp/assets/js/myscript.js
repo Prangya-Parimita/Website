@@ -106,15 +106,30 @@ $(function() {
 											+ '/show/'
 											+ data
 											+ '/product" class="btn btn-primary"><span class="glyphicon glyphicon-eye-open"></span>View Details</a> &#160;';
-									str += '<a href="'
-											+ window.contextRoot
-											+ '/cart/add/'
-											+ data
-											+ '/product" class="btn btn-success"><span class="glyphicon glyphicon-shopping-cart"></span>Add to Cart</a>';
+
+									if (userRole !== 'ADMIN') {
+										if (row.quantity < 1) {
+											str += '<a href="javascript:void(0)" class="btn btn-success disabled"><span class="glyphicon glyphicon-shopping-cart"></span></a>';
+										} else {
+
+											str += '<a href="'
+													+ window.contextRoot
+													+ '/cart/add/'
+													+ data
+													+ '/product" class="btn btn-success"><i class="fas fa-shopping-cart"></i></a>';
+										}
+									} else {
+										str += '<a href="'
+												+ window.contextRoot
+												+ '/manage/'
+												+ data
+												+ '/product" class="btn btn-warning"><span class="glyphicon glyphicon-pencil">EDIT</span></a>';
+									}
 
 									return str;
 
-								}      
+									
+									}      
 								     
 							},
 					]
@@ -323,6 +338,104 @@ $(function() {
 			            
 			})
 	   }
+	
+	
+	
+	
+	/*--------------JQUERY VALIDATION FOR LOGIN PAGE-----------------*/
+	$loginForm = $('#loginForm');
+
+	if ($loginForm.length) {
+
+		$loginForm.validate({
+			rules : {
+				username :
+				{
+					required : true,
+					email : true
+
+				},
+				password : 
+				 {
+					required : true
+				}
+			},
+			messages : {
+				username : {
+					required : "Enter your email id!",
+					email : "Please enter a valid email id!"
+				},
+				password : {
+					required : "Enter your password!"
+						
+				}
+			},
+			errorElement : "em",
+			errorPlacement : function(error, element) {
+				// Add the 'help-block' class to the error element
+				error.addClass("help-block");
+
+				// add the error label after the input element
+				error.insertAfter(element);
+			}
+		}
+
+		);
+
+	}
+	
+                   //HANDLE REFRESH PAGE
+	
+	    $('button[name="refreshCart"]').click(function()
+			{
+	    	var cartLineId = $(this).attr('value'); // etracting the id
+			
+			var countField = $('#count_' + cartLineId); // etracting the count
+			
+			var originalCount = countField.attr('value');// checking the original count
+			
+
+			var updatedCount = countField.val();     //updated count
+		
+			if(updatedCount != originalCount) 
+			{	
+				
+				if(updatedCount < 1 || updatedCount > 5) 
+				{
+					
+					countField.val(originalCount);
+					bootbox.alert({
+							size: 'medium',
+							title: 'Error',
+							message: 'Product Count should be minimum 1 and maximum 5!'
+					});
+				}
+				else 
+				{
+					// use the window.location.href property to send the request to the server
+					var updateUrl = window.contextRoot + '/cart/' + cartLineId + '/update?count=' + updatedCount;
+					window.location.href = updateUrl;
+				}
+			}
+});	
+	
+			
+	    	
+	    	
+	    	
+	    	
+	    	
+	    	
+	    	
+	    	
+	    	
+	    	
+	    	
+	    	
+	    	
+	    	
+	    	
+	    	
 });
 
 

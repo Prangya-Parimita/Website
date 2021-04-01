@@ -1,5 +1,6 @@
 package com.ruchi.backendProject.dto;
 
+import java.io.Serializable;
 import java.util.UUID;
 
 import javax.persistence.Column;
@@ -16,7 +17,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-public class Product
+public class Product implements Serializable 
 {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

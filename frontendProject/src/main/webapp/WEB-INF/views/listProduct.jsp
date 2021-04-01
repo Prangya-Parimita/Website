@@ -1,6 +1,8 @@
 <br />
 <br />
 <br />
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+<div class="container">
 <div class="container">
 
 	<div class="row">

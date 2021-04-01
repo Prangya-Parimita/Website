@@ -1,5 +1,7 @@
 package com.ruchi.backendProject.daoimpl;
 
+import java.util.List;
+
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -49,11 +51,11 @@ public class UserDAOimpl implements UserDAO {
 	}	
 	
 	@Override
-	public boolean addCart(Cart cart) 
+	public boolean updateCart(Cart cart) 
 	{
 		try 
 		{			
-			sessionFactory.getCurrentSession().persist(cart);			
+			sessionFactory.getCurrentSession().update(cart);			
 			return true;
 		}
 		catch(Exception ex) 
@@ -62,8 +64,63 @@ public class UserDAOimpl implements UserDAO {
 		}
 
 	}	
+	@Override
+	public User getByEmail(String email)  // one user can have only one emailid
+	{
+		String selectQuery = "FROM User WHERE email = :email";
+		try 
+		{
+		return sessionFactory.getCurrentSession()
+					         .createQuery(selectQuery,User.class)
+						     .setParameter("email",email)// as email id can only be 1 thats why we are using getSingleResult()
+							 .getSingleResult(); 
+		}
+		
+		catch(Exception ex) 
+		{
+			return null;
+		}
+	}
 	
+	@Override
+	public Address getBillingAddress(int userId)
+	{
+		String selectQuery = "FROM Address WHERE userId = :userId AND billing = :isBilling";
+		try
+		  {
+		       return sessionFactory.getCurrentSession()
+					                .createQuery(selectQuery,Address.class)
+						            .setParameter("userId", userId)
+						            .setParameter("isBilling", true)// billing address is one thats why we are using getSingleResult()
+						            .getSingleResult();
+		 }
+		    catch(Exception ex)
+		 {
+			return null;
+		 }
+	}	
+	@Override
+	public List<Address> listShippingAddresses(int userId) 
+	{
+		String selectQuery = "FROM Address WHERE userId = :userId AND shipping = :isShipping ORDER BY id DESC";
+		return sessionFactory.getCurrentSession()
+					         .createQuery(selectQuery,Address.class)
+						     .setParameter("userId", userId)
+						     .setParameter("isShipping", true)//as shipping address can multiple thats wey using getResultList()
+						     .getResultList();
+		
+	}
 
+	@Override
+	public Address getAddress(int addressId) {
+		try {			
+			return sessionFactory.getCurrentSession().get(Address.class, addressId);			
+		}
+		catch(Exception ex) {
+			System.out.println(ex.getMessage());
+			return null;
+		}
+	}
 
-
+	
 }
