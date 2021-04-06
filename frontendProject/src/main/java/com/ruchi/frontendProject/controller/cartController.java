@@ -83,7 +83,7 @@ public class cartController
 		String response = cartService.validateCartLine();
 		
 		if(!response.equals("result=success")) {
-			return "redirect:/show?"+response;
+			return "redirect:/cart/show?"+response;
 		}
 		else {
 			return "redirect:/checkOut";

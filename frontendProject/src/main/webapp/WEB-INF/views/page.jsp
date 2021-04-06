@@ -35,7 +35,7 @@
     
       
     <!-- Custom theme for this template -->
-   <link href="${customcss}/bootstrap.yeti.theme.css" rel="stylesheet">
+   <link href="${customcss}/bootstrap.united.theme.css" rel="stylesheet">
   
    <!-- Bootstrap DataTable -->
    <link href="${customcss}/dataTables.bootstrap.css" rel="stylesheet">
