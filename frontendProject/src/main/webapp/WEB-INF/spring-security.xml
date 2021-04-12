@@ -17,9 +17,9 @@ xsi:schemaLocation="http://www.springframework.org/schema/beans
 		  <http pattern="/rs/**/" security="none" />
 	      
 	      <http>
-	     <intercept-url pattern="/**" access="permitAll" />
-		 <intercept-url pattern="/manage/**" access="hasAuthority('ADMIN')" />
+	     <intercept-url pattern="/manage/**" access="hasAuthority('ADMIN')" />
 		 <intercept-url pattern="/cart/**" access="hasAuthority('USER')" />
+		 <intercept-url pattern="/**" access="permitAll" />
 		 
          <form-login login-page="/login"/>
          <access-denied-handler error-page="/access-denied"/>

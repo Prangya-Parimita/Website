@@ -110,7 +110,7 @@ $(function() {
 
 									if (userRole !== 'ADMIN')
 									{
-										if (row.quantity < 1) 
+										if (row.quantity < 1)
 										{
 											str += '<a href="javascript:void(0)" class="btn btn-success disabled"><span class="glyphicon glyphicon-shopping-cart"></span></a>';
 										} else

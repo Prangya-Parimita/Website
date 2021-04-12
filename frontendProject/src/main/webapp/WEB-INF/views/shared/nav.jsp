@@ -29,7 +29,7 @@
 			    <li class="nav-item" id="manageProducts"><a class="nav-link"
 						href="${contextRoot}/manage/product">Manage Product</a></li>
 				</security:authorize>
-									
+				
 			</ul>
 						
             <ul class="nav navbar-nav navbar-right">
