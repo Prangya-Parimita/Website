@@ -21,9 +21,9 @@
    <meta charset="utf-8">
    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
    <meta name="description" content="Online Shopping site">
-  <meta name="author" content="ruchi">
+   <meta name="author" content="ruchi">
 
-   <title>Online Shopping - ${title}</title>
+   <title>EZ Shopping - ${title}</title>
    
    <script>
 	window.menu = '${title}';
@@ -87,23 +87,23 @@
 	
 	<!-- --footer -->
 	<!-- JQuery core JavaScript -->
-	<script src="${jquery}/jquery.js"></script>
+	     <script src="${jquery}/jquery.js"></script>
 	
 	<!-- JQuery Validation Plugin -->
-	<script src="${customjs}/jquery.validate.js"></script>
+	     <script src="${customjs}/jquery.validate.js"></script>
 	
 	
 	<!-- Bootstrap core JavaScript -->
-	<script src="${bootjs}/bootstrap.js"></script>
+	     <script src="${bootjs}/bootstrap.js"></script>
 	
 	<!-- Bootstrap dataTable Plugin -->
-		<script src="${customjs}/jquery.dataTables.js"></script>
+		 <script src="${customjs}/jquery.dataTables.js"></script>
 		
-		<script src="${customjs}/dataTables.bootstrap.js"></script>
+		 <script src="${customjs}/dataTables.bootstrap.js"></script>
 		
-		<script src="${customjs}/bootbox.min.js"></script>
+		 <script src="${customjs}/bootbox.min.js"></script>
 	<!-- Customs JavaScripts-->
-		<script src="${customjs}/myscript.js"></script>
+		 <script src="${customjs}/myscript.js"></script>
 		
 	
 	

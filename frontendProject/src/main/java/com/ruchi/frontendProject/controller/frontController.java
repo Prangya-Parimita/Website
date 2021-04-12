@@ -126,14 +126,14 @@ public class frontController
 		
 		if(error!= null) 
 		{
-			mav.addObject("message", "Username or Password is invalid!");
+			mav.addObject("message", "Your username or password is invalid!");
 		}
 		
 		if(logout!= null) 
 		{
-			mav.addObject("logout", "Successfully logged out.");
+			mav.addObject("logout", "You have uccessfully logged out.");
 		}
-		mav.addObject("title","LogIn");
+		mav.addObject("title","LOGIN");
 		return mav;
 	}
 	
@@ -143,6 +143,9 @@ public class frontController
 	public ModelAndView accessDenied() 
 	{
 		ModelAndView mav = new ModelAndView("error");
+		mav.addObject("errorTitle", "!!! Caught You. !!!");		
+		mav.addObject("errorDescription", "You are not authorized to view this page!");		
+		mav.addObject("title", "403 Access Denied");	
 		
 		return mav;
 	}

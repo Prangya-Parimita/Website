@@ -1,3 +1,5 @@
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="security" %><html>    
 <div class="container">
 
 	<!-- Breadcrumb -->
@@ -74,8 +76,7 @@
 				<c:otherwise>				
 				
 				<a href="${contextRoot}/cart/add/${product.id}/product" class="btn btn-success">
-				<span class="glyphicon glyphicon-shopping-cart"></span> Add to Cart</a>
-						
+				 <span class="glyphicon glyphicon-shopping-cart"></span> Add to Cart</a>
 				</c:otherwise>
 			
 			  </c:choose>
@@ -83,11 +84,11 @@
 				
 		 <security:authorize access="hasAuthority('ADMIN')">
 				
-				<a href="${contextRoot}/menage/${product.id}/product" class="btn btn-success">
-				<span class="glyphicon glyphicon-shopping-cart"></span> Edit Cart</a>
+				<a href="${contextRoot}/manage/${product.id}/product" class="btn btn-success">
+				<span class="glyphicon glyphicon-shopping-cart"></span> Edit </a>
 						
 		 </security:authorize>
-			</a> <a href="${contextRoot}/show/all/products" class="btn btn-primary">Back</a>
+			 <a href="${contextRoot}/show/all/products" class="btn btn-primary">Back</a>
 
 		</div>
 
@@ -98,5 +99,4 @@
 
 
 
-</div>
 

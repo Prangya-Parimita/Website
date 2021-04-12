@@ -23,7 +23,7 @@
    <meta name="description" content="Online Shopping site">
   <meta name="author" content="ruchi">
 
-   <title>Online Shopping - ${title}</title>
+   <title>EZ Shopping - ${title}</title>
    
    <script>
 	window.menu = '${title}';
@@ -34,14 +34,15 @@
    <link href="${bootcss}/bootstrap.min.css" rel="stylesheet">
     
       
-    <!-- Custom theme for this template -->
-   <link href="${customcss}/bootstrap.yeti.theme.css" rel="stylesheet">
+   <!-- Custom theme for this template -->
+   <link href="${customcss}/bootstrap.united.theme.css" rel="stylesheet">
   
    <!-- Bootstrap DataTable -->
    <link href="${customcss}/dataTables.bootstrap.css" rel="stylesheet">
    
-      <!-- Custom styles for this template -->
+   <!-- Custom styles for this template -->
    <link href="${customcss}/shop-homepage.css" rel="stylesheet">
+
 </head>
 
 <body>
@@ -51,8 +52,7 @@
 		<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
 			<div class="container">
 				<div class="navbar-header">
-					<a class="navbar-brand" href="${contextRoot}/home">Online
-						Shopping</a>
+					<a class="navbar-brand" href="${contextRoot}/home">EZ Shopping</a>
 				</div>
 			</div>
 		</nav>
@@ -62,7 +62,7 @@
               <c:if test="${not empty message}">
                <div class="row">
                  <div class="col-md-offset-3 col-md-6">
-                      <div class="alert alert-success fade in">${message}</div>
+                      <div class="alert alert-success">${message}</div>
                   </div>
 				</div>
 			  </c:if>
@@ -70,7 +70,7 @@
 			  <c:if test="${not empty logout}">
                <div class="row">
                  <div class="col-md-offset-3 col-md-6">
-                      <div class="alert alert-danger fade in">${logout}</div>
+                      <div class="alert alert-danger">${logout}</div>
                   </div>
 				</div>
 			   </c:if>
@@ -139,14 +139,10 @@
 	<!-- JQuery Validation Plugin -->
 	<script src="${customjs}/jquery.validate.js"></script>
 
-     <script src="${customjs}/bootbox.min.js"></script>
+    <script src="${customjs}/bootbox.min.js"></script>
 	<!-- Customs JavaScripts-->
-		<script src="${customjs}/myscript.js"></script>
+	<script src="${customjs}/myscript.js"></script>
 		
-	
-	
-
-  
 </body>
 
 </html>

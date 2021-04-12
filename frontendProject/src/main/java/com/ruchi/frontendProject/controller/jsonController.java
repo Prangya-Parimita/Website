@@ -39,4 +39,20 @@ public class jsonController
 	{
 		return productDAO.productList();
 	}
+	
+	@RequestMapping("/mv/products")
+	@ResponseBody
+	public List<Product> getMostViewdProducts()
+	{ 
+		return productDAO.getProductsByParam("views",5);
+	}
+
+	@RequestMapping("/mp/products")
+	@ResponseBody
+	public List<Product> getMostPurchasedProducts()
+	{
+		return productDAO.getProductsByParam("purchases",5);
+	}
+
+	
 }

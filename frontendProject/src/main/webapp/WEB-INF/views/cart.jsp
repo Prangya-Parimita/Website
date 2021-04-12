@@ -1,3 +1,5 @@
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
+
 <link
 	href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css"
 	rel="stylesheet">
@@ -19,7 +21,8 @@
 			<table id="cart" class="table table-hover table-condensed">
 				<thead>
 					<tr>
-						<th style="width: 50%">Product</th>
+					    <th style="width: 10%">Image</th>
+						<th style="width: 40%">Product</th>
 						<th style="width: 10%">Price</th>
 						<th style="width: 8%">Quantity</th>
 						<th style="width: 22%" class="text-center">Subtotal</th>
@@ -29,13 +32,14 @@
 				<tbody>
 					<c:forEach items="${cartLines}" var="cartLine">
 						<tr>
-							<td data-th="Product">
+							<td data-th="Image">
 								<div class="row">
-									<div class="col-sm-2 hidden-xs">
+								
 										<img src="${images}/${cartLine.product.code}.jpg"
-											alt="${cartLine.product.name}" class="img-responsive" />
+											alt="${cartLine.product.name}"class="img-fluid" class="img-responsive" />
 									</div>
-									<div class="col-sm-10">
+								    <td data-th="Product">
+								
 										<h4 class="nomargin">${cartLine.product.name}</h4>
 										<p>Brand : ${cartLine.product.brand}</p>
 										<p>Description : ${cartLine.product.description}
@@ -60,7 +64,7 @@
 					</c:forEach>
 				</tbody>
 				<tfoot>
-					<tr class="visible-xs">
+					<tr class="visible-lg ">
 						<td class="text-center"><strong>Total &#8377;
 								${userModel.cart.grandTotal}/-</strong></td>
 					</tr>

@@ -44,6 +44,7 @@ $(function() {
 				.DataTable({
 					lengthMenu : [ [ 3, 5, 10, -1 ],
 							[ '3', '5', '10', 'ALL' ] ],
+							
 					pageLength : 5,
 					ajax : {
 						url : jsonUrl,
@@ -105,19 +106,22 @@ $(function() {
 											+ window.contextRoot
 											+ '/show/'
 											+ data
-											+ '/product" class="btn btn-primary"><span class="glyphicon glyphicon-eye-open"></span>View Details</a> &#160;';
+											+ '/product" class="btn btn-primary"><span class="glyphicon glyphicon-eye-open"></span>VIEW</a> &#160;';
 
-									if (userRole !== 'ADMIN') {
-										if (row.quantity < 1) {
+									if (userRole !== 'ADMIN')
+									{
+										if (row.quantity < 1) 
+										{
 											str += '<a href="javascript:void(0)" class="btn btn-success disabled"><span class="glyphicon glyphicon-shopping-cart"></span></a>';
-										} else {
-
+										} else
+										    {
 											str += '<a href="'
-													+ window.contextRoot
-													+ '/cart/add/'
-													+ data
-													+ '/product" class="btn btn-success"><i class="fas fa-shopping-cart"></i></a>';
-										}
+												+ window.contextRoot
+												+ '/cart/add/'
+												+ data
+												+ '/product" class="btn btn-success"><i class="fa fa-shopping-cart"></i></a>';
+
+											 }
 									} else {
 										str += '<a href="'
 												+ window.contextRoot
@@ -367,7 +371,7 @@ $(function() {
 				},
 				password : {
 					required : "Enter your password!"
-						
+					
 				}
 			},
 			errorElement : "em",
@@ -420,21 +424,6 @@ $(function() {
 });	
 	
 			
-	    	
-	    	
-	    	
-	    	
-	    	
-	    	
-	    	
-	    	
-	    	
-	    	
-	    	
-	    	
-	    	
-	    	
-	    	
 	    	
 });
 

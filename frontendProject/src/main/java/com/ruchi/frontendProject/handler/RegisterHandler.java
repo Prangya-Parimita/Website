@@ -13,88 +13,78 @@ import com.ruchi.backendProject.dto.User;
 import com.ruchi.frontendProject.model.RegisterModel;
 
 @Component("registerHandler")
-public class RegisterHandler
-{
+public class RegisterHandler {
+	@Autowired
+	UserDAO userDAO;
 	
-	 @Autowired
-	 UserDAO userDAO;
-	 
-	 @Autowired
-	 private PasswordEncoder passwordEncoder;
+	@Autowired
+	private PasswordEncoder passwordEncoder;
 
-	 public RegisterModel init()  // getting call before start
-	 {
-			return new RegisterModel();
-	 }
-	
-     public void addUser(RegisterModel registerModel, User user) // getting called on the start flow
-     {
- 		registerModel.setUser(user);
- 	 }
-    
-     public void addBilling(RegisterModel registerModel, Address billing) // billing flow
-     {
-    	 
-    	registerModel.setBilling(billing);
- 	 }
-
-  
-
-     public String saveAll(RegisterModel registerModel) // passing registerModel
-     {
-    	 String transitionValue = "success";
-	     User user = registerModel.getUser(); //user object is passing into the registerModel 
-	     if (user.getRole().equals("USER"))   // need to check the role of user
-	     {
-		    Cart cart = new Cart();           // need to add cart object
-		    cart.setUser(user);              // importing cart and setting user and cart
-		    user.setCart(cart);
-		    
-	     }
-	     
-	   //Encrypt the password
-		  user.setPassword(passwordEncoder.encode(user.getPassword()));
-			
-	     
-	     userDAO.addUser(user);                 // calling add() and need to autowired useDAO
-	     Address billing = registerModel.getBilling();
-	    // billing.setUserId(user);
-	     billing.setUserId(user.getId());
-		 billing.setBilling(true);
-		 userDAO.addAddress(billing);
-		 return (transitionValue);
+	public RegisterModel init() {
+		return new RegisterModel();
 	}
-     
-	     
-     
-     public String validate(User user , MessageContext error)
- 	{
- 		String transitionValue = "success";
- 		
- 		if(!(user.getPassword().equals(user.getConfirmPassword())))
- 		{
- 			error.addMessage(new MessageBuilder()
- 					.error()
- 					.source("confirmPassword")
- 					.defaultText("Confirm password does not match!")
- 					.build());
- 			
- 			 transitionValue = "failure"; 
- 			
- 		}
- 		
- 		if((userDAO.getByEmail(user.getEmail()) != null) ) 
- 		{
- 			error.addMessage(new MessageBuilder()
- 					.error()
- 					.source("email")
- 					.defaultText("Email Id is already taken!")
- 					.build());
- 			
- 			transitionValue = "failure";
- 		}
- 		 
- 		return transitionValue;
+
+	public void addUser(RegisterModel registerModel, User user) {
+		registerModel.setUser(user);
+	}
+
+	public void addBilling(RegisterModel registerModel, Address billing) {
+		registerModel.setBilling(billing);
+	}
+
+	public String saveAll(RegisterModel registerModel) 
+	{
+		String transitionValue = "success";
+		User user = registerModel.getUser();
+		if (user.getRole().equals("USER")) {
+			Cart cart = new Cart();
+			cart.setUser(user);
+			user.setCart(cart);
+		}
+		
+		//Encrypt the password
+		user.setPassword(passwordEncoder.encode(user.getPassword()));
+		
+		// save the user
+		userDAO.addUser(user);
+		// save the billing address
+		Address billing = registerModel.getBilling();
+		billing.setUserId(user.getId());
+		billing.setBilling(true);
+		userDAO.addAddress(billing);
+		return (transitionValue);
+	}
 	
- 	}
+	public String validate(User user , MessageContext error)
+	{
+		String transitionValue = "success";
+		
+		if(!(user.getPassword().equals(user.getConfirmPassword())))
+		{
+			error.addMessage(new MessageBuilder()
+					.error()
+					.source("confirmPassword")
+					.defaultText("Password does not match confirm password!")
+					.build());
+			
+			 transitionValue = "failure"; 
+			
+		}
+		
+		if((userDAO.getByEmail(user.getEmail()) != null) ) 
+		{
+			error.addMessage(new MessageBuilder()
+					.error()
+					.source("email")
+					.defaultText("Email address is already taken!")
+					.build());
+			
+			transitionValue = "failure";
+		}
+		
+		
+		
+		return transitionValue;
+	}
+
 }
